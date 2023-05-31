@@ -6,7 +6,14 @@ import random
 
 
 # Randomize sound fx
-sounds = ["bounce 1.wav", "bounce 2.wav", "bounce 3.wav", "bounce 4.wav", "bounce 5.wav", "bounce 6.wav"]
+sounds = [
+    "bounce 1.wav",
+    "bounce 2.wav",
+    "bounce 3.wav",
+    "bounce 4.wav",
+    "bounce 5.wav",
+    "bounce 6.wav",
+]
 
 win = turtle.Screen()
 win.title("Bree Pong")
@@ -88,8 +95,6 @@ win.onkeypress(paddle_b_up, "Up")
 win.onkeypress(paddle_b_down, "Down")
 
 
-
-
 # main game loop
 while True:
     win.update()
@@ -115,7 +120,11 @@ while True:
         winsound.PlaySound(str(random.choice(sounds)), winsound.SND_ASYNC)
         score_a += 1
         pen.clear()
-        pen.write("player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+        pen.write(
+            "player A: {}  Player B: {}".format(score_a, score_b),
+            align="center",
+            font=("Courier", 24, "normal"),
+        )
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
@@ -123,20 +132,23 @@ while True:
         winsound.PlaySound(str(random.choice(sounds)), winsound.SND_ASYNC)
         score_b += 1
         pen.clear()
-        pen.write("player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+        pen.write(
+            "player A: {}  Player B: {}".format(score_a, score_b),
+            align="center",
+            font=("Courier", 24, "normal"),
+        )
 
     # Paddle and ball collisions
-    if (340 < ball.xcor() < 350) and (paddle_b.ycor() + 40 > ball.ycor() > paddle_b.ycor() - 40):
+    if (340 < ball.xcor() < 350) and (
+        paddle_b.ycor() + 40 > ball.ycor() > paddle_b.ycor() - 40
+    ):
         ball.setx(340)
         ball.dx *= -1
         winsound.PlaySound(str(random.choice(sounds)), winsound.SND_ASYNC)
 
-    if (-340 > ball.xcor() > -350) and (paddle_a.ycor() + 40 > ball.ycor() > paddle_a.ycor() - 40):
+    if (-340 > ball.xcor() > -350) and (
+        paddle_a.ycor() + 40 > ball.ycor() > paddle_a.ycor() - 40
+    ):
         ball.setx(-340)
         ball.dx *= -1
         winsound.PlaySound(str(random.choice(sounds)), winsound.SND_ASYNC)
-
-
-#This is the complete game
-
-
